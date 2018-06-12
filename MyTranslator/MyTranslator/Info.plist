@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The application uses this information to show you your location</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ALBAM___.TTF</string>
+		<string>ALBAS___.TTF</string>
+	</array>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Speech recognition services are used by this app to convert speech to text</string>
 	<key>NSMicrophoneUsageDescription</key>

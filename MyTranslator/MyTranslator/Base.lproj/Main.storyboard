@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14105" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kPx-Js-w0U">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,8 +9,13 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ALBAS___.TTF">
+            <string>AlbaSuper</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Record-->
+        <!-- -->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyTranslator" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,53 +23,237 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWT-n0-zgn">
-                                <rect key="frame" x="67" y="546" width="33" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play!"/>
-                                <connections>
-                                    <action selector="PlayAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ehO-Ak-8Ka"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ze-y2-ccA">
-                                <rect key="frame" x="163" y="318" width="49" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ze-y2-ccA">
+                                <rect key="frame" x="137" y="283" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Record"/>
                                 <connections>
                                     <action selector="RecordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a6R-kc-faF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gab-V8-xDP">
-                                <rect key="frame" x="284" y="546" width="37" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMR-zU-T2n">
+                                <rect key="frame" x="162" y="548" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Stop!"/>
                                 <connections>
-                                    <action selector="StopAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5KS-IB-QQL"/>
+                                    <action selector="RecordReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HdM-db-wpe"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXy-oN-zat">
+                                <rect key="frame" x="41" y="53" width="127" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AlbaSuper" family="Alba Super" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="GpW-Zf-jdf" appends="YES" id="eFW-7R-jXq"/>
+                            <outletCollection property="gestureRecognizers" destination="b8H-8j-a4j" appends="YES" id="J7Z-XL-Qxf"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Record" id="HWm-at-WvH">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="8cQ-H9-czx">
-                            <connections>
-                                <segue destination="8zm-Ml-dq1" kind="show" identifier="ToTextResultView" id="NFG-QD-qoy"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" id="HWm-at-WvH">
+                        <string key="title" base64-UTF8="YES">
+CA
+</string>
                     </navigationItem>
                     <connections>
-                        <outlet property="Play" destination="UWT-n0-zgn" id="ECd-tB-2jd"/>
                         <outlet property="Record" destination="0Ze-y2-ccA" id="MFL-NI-bes"/>
-                        <outlet property="RecordDone" destination="8cQ-H9-czx" id="bCe-j1-ZcF"/>
-                        <outlet property="Stop" destination="Gab-V8-xDP" id="138-3e-uKg"/>
+                        <outlet property="Reset" destination="kMR-zU-T2n" id="v9k-GT-zCd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="GpW-Zf-jdf">
+                    <connections>
+                        <segue destination="8zm-Ml-dq1" kind="custom" identifier="ToTextResultView" customClass="SegueFromRight" customModule="MyTranslator" customModuleProvider="target" id="5NH-v0-aop"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="b8H-8j-a4j">
+                    <connections>
+                        <segue destination="yRn-JZ-r1C" kind="custom" identifier="ToTableView" customClass="SegueFromLeft" customModule="MyTranslator" customModuleProvider="target" id="f0q-Md-f6g"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1608.8" y="122.78860569715144"/>
         </scene>
-        <!--TextResult-->
+        <!--History View Controller-->
+        <scene sceneID="UVe-D6-eEa">
+            <objects>
+                <viewController id="yRn-JZ-r1C" customClass="HistoryViewController" customModule="MyTranslator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pJ9-xN-Ykh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDi-YL-9kH">
+                                <rect key="frame" x="41" y="53" width="136" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AlbaSuper" family="Alba Super" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hbm-q7-Uqc">
+                                <rect key="frame" x="16" y="174" width="343" height="473"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DataCell" rowHeight="100" id="Ntc-Xv-7B9" customClass="DataCell" customModule="MyTranslator" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ntc-Xv-7B9" id="bCI-dQ-b0D">
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TimeStampLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfR-v1-te0">
+                                                    <rect key="frame" x="15" y="11" width="182" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TextLabel" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJX-Pf-AcU">
+                                                    <rect key="frame" x="15" y="47" width="287" height="42"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="target" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOJ-pX-ry7">
+                                                    <rect key="frame" x="269" y="12" width="41" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.1828183199" green="0.7193438191" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ko -&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnY-4Y-OC4">
+                                                    <rect key="frame" x="220" y="12" width="37" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.1828183199" green="0.7193438191" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="TargetLabel" destination="pOJ-pX-ry7" id="67r-Zf-CUz"/>
+                                            <outlet property="TextLabel" destination="oJX-Pf-AcU" id="sKf-A0-Qc5"/>
+                                            <outlet property="TimeStampLabel" destination="JfR-v1-te0" id="F5g-pu-BO2"/>
+                                            <segue destination="2q7-ZZ-Fc1" kind="custom" identifier="ToDetailView" customClass="SegueFromRight" customModule="MyTranslator" customModuleProvider="target" id="xzW-f5-hC0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="3wd-qX-bkK"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="18W-h4-ZPp" appends="YES" id="IKa-SH-SBs"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="TableView" destination="hbm-q7-Uqc" id="FxQ-Rl-vni"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cdr-8F-Hbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="18W-h4-ZPp">
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="custom" identifier="ToHomeFromTable" customClass="SegueFromRight" customModule="MyTranslator" customModuleProvider="target" id="jLP-XP-MqX"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="784.79999999999995" y="875.71214392803608"/>
+        </scene>
+        <!--History Detail View Controller-->
+        <scene sceneID="qHx-CK-4XF">
+            <objects>
+                <viewController id="2q7-ZZ-Fc1" customClass="HistoryDetailViewController" customModule="MyTranslator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jad-Hb-rbl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGf-3N-deJ">
+                                <rect key="frame" x="25" y="58" width="113" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AlbaSuper" family="Alba Super" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TimeLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJY-cF-mi7">
+                                <rect key="frame" x="156" y="39" width="213" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TargetLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLD-la-GAU">
+                                <rect key="frame" x="156" y="65" width="213" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guQ-hQ-dTZ">
+                                <rect key="frame" x="156" y="91" width="213" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="yLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKD-Rh-HhB">
+                                <rect key="frame" x="156" y="117" width="213" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="S1P-Dv-pwF">
+                                <rect key="frame" x="26" y="153" width="322" height="117"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIv-vY-Ucp">
+                                <rect key="frame" x="25" y="276" width="81" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AlbaSuper" family="Alba Super" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LnI-Aw-ZUz">
+                                <rect key="frame" x="8" y="357" width="359" height="302"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="WTn-dH-kSw"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="AKY-ae-zsz" appends="YES" id="RKg-1b-76H"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="MapLabel" destination="LnI-Aw-ZUz" id="M8Y-fY-nU1"/>
+                        <outlet property="TargetLabel" destination="gLD-la-GAU" id="1Hy-a7-l92"/>
+                        <outlet property="TextLabel" destination="S1P-Dv-pwF" id="gTR-OY-eD0"/>
+                        <outlet property="TimeLabel" destination="CJY-cF-mi7" id="is4-QY-5om"/>
+                        <outlet property="xLabel" destination="guQ-hQ-dTZ" id="76O-Oz-5FY"/>
+                        <outlet property="yLabel" destination="sKD-Rh-HhB" id="3e8-La-MVS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Nt-fB-odE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="AKY-ae-zsz">
+                    <connections>
+                        <segue destination="yRn-JZ-r1C" kind="custom" customClass="SegueFromRight" customModule="MyTranslator" customModuleProvider="target" id="bSs-YY-RiV"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="20" y="875.71214392803608"/>
+        </scene>
+        <!--Speech Controller-->
         <scene sceneID="AF5-78-dh1">
             <objects>
                 <viewController id="8zm-Ml-dq1" customClass="SpeechController" customModule="MyTranslator" customModuleProvider="target" sceneMemberID="viewController">
@@ -72,33 +261,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tid-Iz-6MJ">
-                                <rect key="frame" x="56" y="206" width="263" height="309"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="음성을 녹음해 주세요" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tid-Iz-6MJ">
+                                <rect key="frame" x="63" y="172" width="249" height="322"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.77090022782675749" green="0.85141081023401521" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJQ-Ml-B6c">
+                                <rect key="frame" x="41" y="53" width="86" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AlbaSuper" family="Alba Super" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="vSk-Eo-Csk"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="KGs-lC-dhV" appends="YES" id="jTI-Ol-gXq"/>
+                            <outletCollection property="gestureRecognizers" destination="CgI-db-hdA" appends="YES" id="taG-GO-fxI"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="TextResult" id="BLR-qY-Iyw">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="FLb-Ps-ye6">
-                            <connections>
-                                <segue destination="wFU-z3-LSk" kind="show" identifier="ToPickerView" id="hZ1-uZ-Jmw"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="0fL-4C-MiL"/>
                     <connections>
                         <outlet property="TextView" destination="tid-Iz-6MJ" id="sG5-AU-3dX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8z-Lc-kZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="KGs-lC-dhV">
+                    <connections>
+                        <segue destination="wFU-z3-LSk" kind="custom" identifier="ToPickerView" customClass="SegueFromRight" customModule="MyTranslator" customModuleProvider="target" id="7vX-wt-Cx8"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="CgI-db-hdA">
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="custom" identifier="UnwindToViewController" customClass="SegueFromLeft" customModule="MyTranslator" customModuleProvider="target" id="Nr5-P6-k9X"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2385" y="123"/>
+            <point key="canvasLocation" x="2384.8000000000002" y="122.78860569715144"/>
         </scene>
-        <!--Picker-->
+        <!--Picker View Controller-->
         <scene sceneID="8Ty-Vq-K9W">
             <objects>
                 <viewController id="wFU-z3-LSk" customClass="PickerViewController" customModule="MyTranslator" customModuleProvider="target" sceneMemberID="viewController">
@@ -114,22 +319,37 @@
                                     <outlet property="delegate" destination="LaM-fh-6yq" id="ebT-eZ-tdH"/>
                                 </connections>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81O-zA-HGp">
+                                <rect key="frame" x="41" y="53" width="111" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AlbaSuper" family="Alba Super" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="e1W-2z-lNl"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="WPd-QD-LvD" appends="YES" id="inf-5p-rlT"/>
+                            <outletCollection property="gestureRecognizers" destination="NsG-Tz-jvP" appends="YES" id="InA-Ph-IYH"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Picker" id="1Gi-V4-7af">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="URc-NQ-gSd">
-                            <connections>
-                                <segue destination="cYW-ZL-5Fk" kind="show" identifier="ToTranslatedResultView" id="OVd-z4-im4"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="pickerView" destination="4b9-OS-5ce" id="nHo-G5-gV5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kth-FA-R2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="WPd-QD-LvD">
+                    <connections>
+                        <segue destination="cYW-ZL-5Fk" kind="custom" identifier="ToTranslatedResultView" customClass="SegueFromRight" customModule="MyTranslator" customModuleProvider="target" id="qDy-Wk-xSI"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="NsG-Tz-jvP">
+                    <connections>
+                        <segue destination="8zm-Ml-dq1" kind="custom" identifier="UnwindToTextResultView" customClass="SegueFromLeft" customModule="MyTranslator" customModuleProvider="target" id="MC6-33-d76"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3194" y="123"/>
         </scene>
@@ -141,42 +361,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TTw-Bt-onp">
-                                <rect key="frame" x="56" y="201" width="263" height="309"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4d-DR-RGd">
+                                <rect key="frame" x="41" y="53" width="118" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.7709002278" green="0.85141081019999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="AlbaSuper" family="Alba Super" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="음성을 녹음해 주세요" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZ3-HR-CGB">
+                                <rect key="frame" x="63" y="172" width="249" height="322"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khC-hE-dLZ">
+                                <rect key="frame" x="151" y="528" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="GoToHome:" destination="cYW-ZL-5Fk" eventType="touchUpInside" id="uNu-Ya-Ftb"/>
+                                    <segue destination="BYZ-38-t0r" kind="custom" identifier="UnwindToHome" customClass="SegueFromLeft" customModule="MyTranslator" customModuleProvider="target" id="zlC-DY-GK5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="HBU-R3-9gi"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="wVt-ZP-R94" appends="YES" id="D4S-I5-6Ja"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="TextView" destination="TTw-Bt-onp" id="cmE-9D-NfY"/>
+                        <outlet property="HomeButton" destination="khC-hE-dLZ" id="GeC-7E-nfE"/>
+                        <outlet property="TextView" destination="BZ3-HR-CGB" id="AJr-JS-Fhq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASN-b1-JgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4007" y="123"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="HEF-k7-mL8">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kPx-Js-w0U" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6yY-7y-X1v">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <swipeGestureRecognizer direction="right" id="wVt-ZP-R94">
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hT2-h4-FGL"/>
+                        <segue destination="wFU-z3-LSk" kind="custom" identifier="UnwindToPickerView" customClass="SegueFromLeft" customModule="MyTranslator" customModuleProvider="target" id="Ti6-hF-LJK"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S7D-VB-icc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="833" y="123"/>
+            <point key="canvasLocation" x="4005.5999999999999" y="122.78860569715144"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7vX-wt-Cx8"/>
+        <segue reference="5NH-v0-aop"/>
+        <segue reference="bSs-YY-RiV"/>
+        <segue reference="jLP-XP-MqX"/>
+    </inferredMetricsTieBreakers>
 </document>

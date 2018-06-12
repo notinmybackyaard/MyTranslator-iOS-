@@ -53,13 +53,18 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         if segue.identifier == "ToTranslatedResultView" {
             if let TranslatedResultViewController = segue.destination as? TranslatedResultViewController {
                 TranslatedResultViewController.Text = Text!
-                TranslatedResultViewController.target = self.target
+                TranslatedResultViewController.target = target
+            }
+        }  else if segue.identifier == "UnwindToTextResultView" {
+            if let SpeechController = segue.destination as? SpeechController {
+                SpeechController.Text = Text!
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Opa.png")!)
         self.pickerView.delegate = self;
         self.pickerView.dataSource = self;
     }

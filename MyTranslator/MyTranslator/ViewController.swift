@@ -9,21 +9,37 @@
 import UIKit
 import AVFoundation
 import Speech
+import CoreLocation
 class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     var audioPlayer: AVAudioPlayer?
     var audioRecorder: AVAudioRecorder?
     
     @IBOutlet weak var Record: UIButton!
-    @IBOutlet weak var Play: UIButton!
-    @IBOutlet weak var Stop: UIButton!
-    @IBOutlet weak var RecordDone: UIBarButtonItem!
+    @IBOutlet weak var Reset: UIButton!
     
     var Text : String?
+    var IsRecordTurn = true
+    
+    var target: String?
+    var ResultText : String?
+    var coor : CLLocationCoordinate2D?
+    var timestamp : Date?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToTextResultView" {
         if let SpeechController = segue.destination as? SpeechController {
-            SpeechController.Text = Text!
+            if(Text == nil) {
+                Text = "음성을 녹음해주세요!"
+            }
+            SpeechController.Text = Text
+            }
+        }
+        if segue.identifier == "ToTableView" {
+             if let HistoryViewController = segue.destination as? HistoryViewController {
+            HistoryViewController.coor = coor
+            HistoryViewController.ResultText = ResultText
+            HistoryViewController.target = target
+            HistoryViewController.timestamp = timestamp
             }
         }
     }
@@ -32,72 +48,67 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
         SFSpeechRecognizer.requestAuthorization { authStatus in
             OperationQueue.main.addOperation {
                 switch authStatus {
-                case .authorized:
-                    self.RecordDone.isEnabled = true
-                
+               case .authorized:
+                    print("authorized")
                 case .denied:
-                    self.RecordDone.isEnabled = false
                     self.Record.setTitle("Speech recognition access denied by user", for: .disabled)
                     
                 case .restricted:
-                    self.RecordDone.isEnabled = false
                     self.Record.setTitle("Speech recognition restricted on device", for: .disabled)
                     
                 case .notDetermined:
-                    self.RecordDone.isEnabled = false
                     self.Record.setTitle("Speech recognition not authorized", for: .disabled)
+
                 }
             }
         }
     }
     
     @IBAction func RecordAudio(_ sender: Any) {
-        if audioRecorder?.isRecording == false {
-            Play.isEnabled = false
-            Stop.isEnabled = true
-            audioRecorder?.record()
-        }
-    }
-    @IBAction func PlayAudio(_ sender: Any) {
-        if audioRecorder?.isRecording == false {
-            Stop.isEnabled = true
-            Record.isEnabled = false
-            
-            do {
-                try audioPlayer = AVAudioPlayer(contentsOf:
-                    (audioRecorder?.url)!)
-                audioPlayer!.delegate = self
-                audioPlayer!.prepareToPlay()
-                audioPlayer!.play()
-            } catch let error as NSError {
-                print("audioPlayer error: \(error.localizedDescription)")
+        if audioRecorder?.isRecording == false { // 녹음안하고 있을때
+            if IsRecordTurn == true // 녹음할 차례 일때
+            {
+                audioRecorder?.record()
+                Record.setImage(UIImage(named: "stop.png"), for: .normal)
+            } else  // 플레이할 차례 일때
+            {
+                Record.isEnabled = false
+                do {
+                    try audioPlayer = AVAudioPlayer(contentsOf:
+                        (audioRecorder?.url)!)
+                    audioPlayer!.delegate = self
+                    audioPlayer!.prepareToPlay()
+                    audioPlayer!.play()
+                } catch let error as NSError {
+                    print("audioPlayer error: \(error.localizedDescription)")
+                }
             }
         }
-    }
-    
-    @IBAction func StopAudio(_ sender: Any) {
-        Stop.isEnabled = false
-        Play.isEnabled = true
-        Record.isEnabled = true
-        
-        if audioRecorder?.isRecording == true {
+        else{ // 녹음하고 있을 때
             audioRecorder?.stop()
-        } else {
-            audioPlayer?.stop()
+            Record.setImage(UIImage(named: "play.png"), for: .normal)
+            IsRecordTurn = false
+            
+            // 다 끝나고 해도 될듯
+            let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ko-KR"))!
+            let request = SFSpeechURLRecognitionRequest(
+                url: (audioRecorder?.url)!)
+            speechRecognizer.recognitionTask(with: request, resultHandler: {
+                (result, error) in
+                self.Text = result?.bestTranscription.formattedString
+            })
         }
-        
-        let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ko-KR"))!
-        let request = SFSpeechURLRecognitionRequest(
-            url: (audioRecorder?.url)!)
-        speechRecognizer.recognitionTask(with: request, resultHandler: {
-            (result, error) in
-            self.Text = result?.bestTranscription.formattedString
-        })
     }
-    
+    @IBAction func RecordReset(_ sender: Any) {
+        IsRecordTurn = true
+        Record.setImage(UIImage(named: "record.png"), for: .normal)
+        audioPlayer?.stop()
+        audioRecorder?.stop()
+    }
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        Record.isEnabled = true
-        Stop.isEnabled = false
+        if(IsRecordTurn == false) {
+            Record.isEnabled = true
+        }
     }
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         print("Audio Play Decode Error")
@@ -110,9 +121,9 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Play.isEnabled = false
-        Stop.isEnabled = false
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Opa.png")!)
+        Record.setImage(UIImage(named: "record.png"), for: .normal)
+        Reset.setImage(UIImage(named: "reset.png"), for: .normal)
         
         let fileMgr = FileManager.default
         let dirPaths = fileMgr.urls(for: .documentDirectory,
