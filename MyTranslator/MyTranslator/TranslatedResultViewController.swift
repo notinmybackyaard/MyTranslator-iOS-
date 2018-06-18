@@ -45,6 +45,7 @@ class TranslatedResultViewController: UIViewController, CLLocationManagerDelegat
                 ViewController.ResultText = TextView.text
                 ViewController.target = target
                 ViewController.timestamp = timestamp
+                HistorySampleData.append(Data(text: TextView.text, target: target, timestamp: timestamp, coordinate: coor))
             }
         }
     }
@@ -69,7 +70,7 @@ class TranslatedResultViewController: UIViewController, CLLocationManagerDelegat
             self.TextView.text = papagoDTO?.message?.result?.translatedText
         }
         self.TextView.alpha = 0.0
-        HomeButton.setImage(UIImage(named: "home.png"), for: .normal)
+        HomeButton.setImage(UIImage(named: "save.png"), for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -22,11 +22,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToDetailView" {
-            if let HistoryDetailViewController = segue.destination as? HistoryDetailViewController {
-                HistoryDetailViewController.ResultText = ResultText
-                HistoryDetailViewController.target = target
-                HistoryDetailViewController.coor = coor
-                HistoryDetailViewController.timestamp = timestamp
+            if let HistoryDetailViewController = segue.destination as? HistoryDetailViewController,
+                let Index = TableView.indexPathForSelectedRow?.row
+            {
+                HistoryDetailViewController.ResultText = HistoryDatas[Index].text
+                HistoryDetailViewController.target = HistoryDatas[Index].target
+                HistoryDetailViewController.coor = HistoryDatas[Index].coordinate
+                HistoryDetailViewController.timestamp = HistoryDatas[Index].timestamp
             }
         }
     }
@@ -46,6 +48,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 100
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath)
@@ -60,7 +65,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Mantle.png")!)
         TableView.delegate = self
         TableView.dataSource = self
-        HistoryDatas.append(Data(text: ResultText, target: target, timestamp: timestamp, coordinate: coor))
         let indexPath = IndexPath(row: HistoryDatas.count-1, section: 0)
         TableView.insertRows(at: [indexPath], with: .automatic)
     }

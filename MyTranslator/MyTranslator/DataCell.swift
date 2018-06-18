@@ -19,10 +19,14 @@ class DataCell: UITableViewCell {
     
     var HistoryData: Data! {
         didSet {
-            kr = date.string(from: HistoryData.timestamp!)
+            if(HistoryData.timestamp == nil)
+            {
+            return
+            }
+            kr = date.string(from: (HistoryData.timestamp)!)
             TimeStampLabel.text = kr
-            TextLabel.text = HistoryData.text
-            TargetLabel.text = HistoryData.target
+            TextLabel.text = HistoryData?.text
+            TargetLabel.text = HistoryData?.target
         }
     }
     

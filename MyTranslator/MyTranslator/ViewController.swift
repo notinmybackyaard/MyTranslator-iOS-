@@ -29,7 +29,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
         if segue.identifier == "ToTextResultView" {
         if let SpeechController = segue.destination as? SpeechController {
             if(Text == nil) {
-                Text = "음성을 녹음해주세요!"
+                Text = "겨울이 지나 봄이 오듯"
             }
             SpeechController.Text = Text
             }

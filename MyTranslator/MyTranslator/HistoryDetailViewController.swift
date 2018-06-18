@@ -47,6 +47,12 @@ class HistoryDetailViewController: UIViewController, MKMapViewDelegate {
         date.locale = Locale(identifier: "ko_kr")
         date.timeZone = TimeZone(abbreviation: "KST") // "2018-03-21 18:07:27"
         date.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        MapLabel.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         kr = date.string(from: timestamp!)
         
         TimeLabel.text = "Time : " + kr!
@@ -54,14 +60,8 @@ class HistoryDetailViewController: UIViewController, MKMapViewDelegate {
         xLabel.text = "Latitude : " +  (coor?.latitude.description)!
         yLabel.text = "Longitude : " +  (coor?.longitude.description)!
         TextLabel.text = ResultText!
-        
         let initialLocation = CLLocation(latitude: 0, longitude: 0)
         centerMapOnLocation(location: initialLocation)
-        MapLabel.delegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     
